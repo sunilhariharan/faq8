@@ -1,0 +1,116 @@
+{% extends 'index.html' %}
+{% block mainbody %}
+
+
+
+
+
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+
+
+    <div class="chat block" id="app">
+        <div class="card-header text-center">
+            <h2>Welcome {{ name }} <i style="float:right" v-on:click="saveLogFile" class="fa fa-power-off" aria-hidden="true" data-toggle="modal"
+                                      data-target="#closeModal"></i></h2>
+
+            <h3>Ask Support Bot</h3>
+
+
+
+
+
+
+        </div>
+
+
+
+        <div class="chat-area p-xl-5 p-3">
+            <div class="btn-toolbar" style="margin-top:20px" v-for="message in messages"
+                 v-bind:class="{ 'bot-message' :message.bot, 'message' :message.user, 'ml-auto' :message.user,'answer': message.isAnswer}">
+                <span v-if="!message.options && !message.isAnswer">[[message.text]]</span>
+                <div v-if="message.isAnswer">
+                    <h4>[[message.title]]</h4>
+                    <p>[[message.body]]</p>
+                    <p><a v-bind:href="message.link" target="_blank">Please raise a call log if issue not solved and don't forget to attach a screenshot of the error message</a></p>
+
+                </div>
+                <div v-if="message.options" v-for="msg in message.text"
+                     class="p-lg-3 p-2">
+                    <button v-on:click="setCategory(msg)" class="btn btn-info">[[msg]]</button>
+                </div>
+
+              </div>
+              <div>
+                <p><br></p>
+                <p><br></p>
+                <p><br></p>
+              </div>
+              </div>
+
+
+
+
+        <div class="card-footer flex-row justify-content-center">
+            <form id="question-form" v-on:submit.prevent="getAnswer(this)">{% csrf_token %}
+                <div class="form-row justify-content-center">
+                    <div class="col-md-5 col-8 px-3 align-self-center">
+                        <input type="text" class="form-control m-auto" placeholder="Start a conversation" id="question"
+                               list="querylist" required>
+                               <datalist id="querylist">
+<option value="kyc - photo not uploading" />
+<option value="kyc - application slowness issue" />
+<option value="kyc - not able to upload file" />
+<option value="isac - id deleted" />
+<option value="isac - id not available" />
+<option value="isac - raise a request for id creation" />
+<option value="imap - procedure for mapping" />
+<option value="imap - showing id dormented" />
+<option value="iapproval - cant upload excel file" />
+<option value="iapproval - app running slow on ios" />
+<option value="gst - more money deducted" />
+<option value="gst - GST for businesses is 18 percent or 28" />
+</datalist>
+                    </div>
+                    <div class="px-3">
+                        <button type="submit" class="btn btn-primary btn-circle"><i class="fa fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="closeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Do you want to save a copy of your chat?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Logging out will close this chat window. Click 'Save chat' to save a copy of your chat
+                    </div>
+                    <div class="modal-footer">
+                        <button v-on:click="thankyou" class="btn btn-secondary" id="logout" title="Logout">Logout
+                        </button>
+                        <button v-on:click="getLogFile" class="btn btn-primary" title="Save chat">Save chat</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+{% block scripts %}
+    {% load static %}
+    <script src="{% static 'js/vue-script.js' %}"></script>
+    {# Vue #}
+    <script src="/static/js/vue.min.js"></script>
+    <script src="/static/js/vue-resource.js"></script>
+{% endblock %}

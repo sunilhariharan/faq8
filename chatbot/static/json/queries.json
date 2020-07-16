@@ -1,0 +1,27 @@
+{
+"categories": {
+    "KYC": {
+      "application slowness issue": [],
+      "not able to upload file": [],
+      "photo not uploading": []
+    },
+    "ISAC": {
+      "id deleted": [],
+      "id not available": [],
+      "raise a request for id creation": []
+    },
+    "IMAP": {
+      "procedure for mapping": [],
+      "showing id dormented": []
+    },
+    "IAPPROVAL": {
+      "cant upload excel file": [],
+      "app running slow on ios": []
+    },
+    "GST": {
+      "more money deducted": [],
+      "GST for businesses is 18 percent or 28": []
+    }
+    
+  }
+}

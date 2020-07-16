@@ -1,0 +1,106 @@
+body {
+    font-family: 'PT Sans', sans-serif;
+}
+
+.welcome .card-header {
+    background-color: blue;
+    color: white;
+}
+
+.chat .card-header {
+    color: white;
+    background-color: blue;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+.logout .card-header {
+    background-color: #0062cc;
+    color: #d0e3f7;
+}
+
+.logout .card-footer {
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    background-color: rgba(0, 123, 255, .5);
+    color: #6c757d;
+}
+
+.chat .card-footer {
+    background-color: #5a6268;
+     position: fixed;
+       bottom: 0;
+       width: 100%;
+
+}
+
+.chat-area {
+    overflow-y: scroll;
+    height: -webkit-fill-available;
+    background-color: white;
+}
+
+
+.welcome .flex-row {
+    padding: 25% 0;
+}
+
+
+
+.bot-message{
+  padding: 12px;
+    border-radius: 15px;
+    border-bottom-left-radius: 3px;
+    background-color: #f1f0f0;
+    clear: both;
+    white-space: pre-wrap;
+  width: fit-content;
+}
+
+.message {
+
+padding: 12px;
+background-color: #e1e9f9;
+opacity: 1;
+clear: both;
+color: #000;
+white-space: pre-wrap;
+
+border-radius: 15px;
+border-bottom-right-radius: 3px
+width: fit-content;
+}
+
+@media (max-width: 767px) {
+    .bot-message, .message {
+        max-width: 50% !important;
+
+    }
+}
+
+@media (min-width: 768px) {
+    .bot-message, .message {
+        max-width: 50% !important;
+
+    }
+}
+
+.btn-circle {
+    height: 60px;
+    width: 60px;
+    border-radius: 60px;
+    text-align: center;
+
+}
+
+.bot-message .btn {
+    white-space: unset;
+    text-align: left;
+    color:black;
+    background-color:#f1f0f0;
+   display:inline-block;
+    border: 1px solid black;
+
+}
